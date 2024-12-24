@@ -3,3 +3,5 @@ README.md
 .nvmrc
 .vscode
 *.docs.mdx
+
+src/migrations/*
