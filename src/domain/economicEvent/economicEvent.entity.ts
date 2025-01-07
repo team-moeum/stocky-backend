@@ -9,36 +9,36 @@ import {
 } from 'typeorm';
 
 @Entity()
-@Index(['eventDateTime', 'country'])
+@Index(['time', 'country'])
 export class EconomicEvent {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column({ type: 'timestamp' })
   @Index()
-  eventDateTime: Date;
+  time: Date;
+
+  @Column()
+  name: string;
 
   @Column()
   country: string;
 
   @Column({
     type: 'enum',
-    enum: ['LOW', 'MEDIUM', 'HIGH'],
-    default: 'MEDIUM',
+    enum: ['low', 'medium', 'high'],
+    default: 'low',
   })
-  importance: string;
-
-  @Column()
-  event: string;
+  impact: string;
 
   @Column({ type: 'decimal', precision: 10, scale: 2, nullable: true })
-  actualValue: number;
+  actual: number;
 
   @Column({ type: 'decimal', precision: 10, scale: 2, nullable: true })
-  forecastValue: number;
+  estimate: number;
 
   @Column({ type: 'decimal', precision: 10, scale: 2, nullable: true })
-  previousValue: number;
+  previous: number;
 
   @Column({ nullable: true })
   unit: string;
