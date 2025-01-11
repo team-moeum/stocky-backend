@@ -9,7 +9,7 @@ import {
 } from 'typeorm';
 
 @Entity()
-@Index(['time', 'country'])
+@Index(['time', 'name'], { unique: true })
 export class EconomicEvent {
   @PrimaryGeneratedColumn()
   id: number;
