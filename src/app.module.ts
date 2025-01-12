@@ -6,7 +6,7 @@ import { ormConfig } from './config/orm.config';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ScheduleModule } from '@nestjs/schedule';
 import { BatchModule } from './batch/batch.module';
-import { EconomicEventModule } from './domain/economicEvent/\beconomicEvent.module';
+import { EconomicEventModule } from './domain/economicEvent/economicEvent.module';
 
 @Module({
   imports: [
