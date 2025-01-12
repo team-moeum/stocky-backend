@@ -1,0 +1,55 @@
+name: Deploy to cloudtype
+env:
+  DB_HOST: ${{ secrets.DB_HOST }}
+  DB_USERNAME: ${{ secrets.DB_USERNAME }}
+  DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+  DB_DATABASE: ${{ secrets.DB_DATABASE }}
+  API_KEY_PROFIT: ${{ secrets.API_KEY_PROFIT }}
+  CLOUDTYPE_TOKEN: ${{ secrets.CLOUDTYPE_TOKEN }}
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Connect deploy key
+        uses: cloudtype-github-actions/connect@v1
+        with:
+          token: ${{ env.CLOUDTYPE_TOKEN }}
+          ghtoken: ${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy
+        uses: cloudtype-github-actions/deploy@v1
+        with:
+          token: ${{ secrets.CLOUDTYPE_TOKEN }}
+          project: wngud6012/stocky-backend
+          stage: main
+          yaml: >
+            name: stocky-server
+
+            app: dockerfile
+
+            options:
+              ports: "3000"
+              dockerfile: Dockerfile
+              healthz: /health
+              env:
+                - name: DB_HOST
+                  value: ${{env.DB_HOST}}
+                - name: DB_USERNAME
+                  value: ${{env.DB_USERNAME}}
+                - name: DB_PASSWORD
+                  value: ${{env.DB_PASSWORD}}
+                - name: DB_DATABASE
+                  value: ${{env.DB_DATABASE}}
+                - name: API_KEY_PROFIT
+                  value: ${{env.API_KEY_PROFIT}}
+              args: []
+            context:
+              git:
+                url: git@github.com:${{ github.repository }}.git
+                ref: ${{ github.ref }}
