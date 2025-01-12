@@ -10,6 +10,7 @@ async function bootstrap() {
     .setDescription('Stocky Backend API description')
     .setVersion('1.0')
     .addTag('economic-events')
+    .addTag('health')
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, documentFactory);

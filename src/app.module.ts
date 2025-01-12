@@ -7,6 +7,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ScheduleModule } from '@nestjs/schedule';
 import { BatchModule } from './batch/batch.module';
 import { EconomicEventModule } from './domain/economicEvent/economicEvent.module';
+import { HealthModule } from './health/health.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { EconomicEventModule } from './domain/economicEvent/economicEvent.module
     ScheduleModule.forRoot(),
     BatchModule,
     EconomicEventModule,
+    HealthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
