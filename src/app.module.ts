@@ -6,6 +6,7 @@ import { ormConfig } from './config/orm.config';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ScheduleModule } from '@nestjs/schedule';
 import { BatchModule } from './batch/batch.module';
+import { EconomicEventModule } from './domain/economicEvent/\beconomicEvent.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { BatchModule } from './batch/batch.module';
     }),
     ScheduleModule.forRoot(),
     BatchModule,
+    EconomicEventModule,
   ],
   controllers: [AppController],
   providers: [AppService],
