@@ -6,6 +6,7 @@ env:
   DB_DATABASE: ${{ secrets.DB_DATABASE }}
   API_KEY_PROFIT: ${{ secrets.API_KEY_PROFIT }}
   CLOUDTYPE_TOKEN: ${{ secrets.CLOUDTYPE_TOKEN }}
+  GHP_TOKEN: ${{ secrets.GHP_TOKEN }}
 on:
   workflow_dispatch:
   push:
@@ -21,11 +22,11 @@ jobs:
         uses: cloudtype-github-actions/connect@v1
         with:
           token: ${{ env.CLOUDTYPE_TOKEN }}
-          ghtoken: ${{ secrets.GITHUB_TOKEN }}
+          ghtoken: ${{ env.GHP_TOKEN }}
       - name: Deploy
         uses: cloudtype-github-actions/deploy@v1
         with:
-          token: ${{ secrets.CLOUDTYPE_TOKEN }}
+          token: ${{ env.CLOUDTYPE_TOKEN }}
           project: wngud6012/stocky-backend
           stage: main
           yaml: >
