@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
 
 env:
-  TARGET_REPO: team-moeum/checkmate-frontend
-  TARGET_BRANCH: main
+  TARGET_REPO: team-moeum/stocky-frontend
+  TARGET_BRANCH: dev
   SOURCE_BRANCH: oas-${{ github.run_number }}-${{ github.run_attempt }}
   API_DOCS_URL: ${{ secrets.API_DOCS_URL }}
   PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
