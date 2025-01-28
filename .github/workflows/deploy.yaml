@@ -28,7 +28,7 @@ jobs:
         with:
           token: ${{ env.CLOUDTYPE_TOKEN }}
           project: wngud6012/stocky-backend
-          stage: main
+          stage: dev
           yaml: >
             name: stocky-server
 
